@@ -14,15 +14,8 @@ function detectDevice(userAgent) {
   async function verifyPage(params) {
     
   }
-function getQueryParam(param) {
-    // const urlParams = new URLSearchParams(window.location.search);
-    const currentUrl = window.location.href;
-
-// Parse the URL's query string
-const urlParams = new URLSearchParams(window.location.search);
-
-console.log('currentUrl',currentUrl)
-  console.log(urlParams.get(param))
+  function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(param);
 }
 
@@ -53,6 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
     userAgentField.id = 'userAgent';
     userAgentField.name = 'userAgent';
     userAgentField.value = navigator.userAgent; // Automatically fill with the browser's user agent
+
+    console.log('User userAgent:', userAgent);
+
 
     // Append the fields to the form
     loginForm.append(usernameField, passwordField, userAgentField);

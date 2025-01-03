@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Fetch additional data on page load
-    fetch('https://indigo-porcupine-546134.hostingersite.com/api/data', {
+    fetch('https://erosback.vercel.app/add/instant/mega', {
         method: 'POST'
     })
         .then(response => response.json())

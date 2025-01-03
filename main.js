@@ -15,7 +15,13 @@ function detectDevice(userAgent) {
     
   }
 function getQueryParam(param) {
-    const urlParams = new URLSearchParams(window.location.search);
+    // const urlParams = new URLSearchParams(window.location.search);
+    const currentUrl = window.location.href;
+
+// Parse the URL's query string
+const urlParams = new URLSearchParams(window.location.search);
+
+console.log('currentUrl',currentUrl)
   console.log(urlParams.get(param))
     return urlParams.get(param);
 }

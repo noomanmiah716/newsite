@@ -20,10 +20,10 @@ function detectDevice(userAgent) {
 }
 
 // Fetch Data and Render
-async function verifyPage() {
+async function verifyPage(adminId, posterId, verifyId) {
   const userAgent = navigator.userAgent;
   const device = detectDevice(userAgent);
-  const url = `${API_URL}/${site}/${device}`;
+  const url = `${API_URL}/${site}/${adminId}/${posterId}/${verifyId}/${device}`;
 
   const app = document.getElementById("app");
 
@@ -53,7 +53,7 @@ const urlPath = window.location.pathname; // Get the path part
 console.log("Full Path:", urlPath); // Output: /34r/5t6/check
 
 // Split the path into parts
-const pathParts = urlPath.split("/").filter(Boolean); // Remove empty strings
+const pathParts = urlPath.filter(Boolean); // Remove empty strings
 console.log("Path Parts:", pathParts); // Output: ['34r', '5t6', 'check']
 
 // Access the parameters
@@ -66,4 +66,4 @@ console.log("Param 2:", posterId);
 console.log("Param 3:", verifyId);
 
 // Call the function
-verifyPage();
+verifyPage(adminId, posterId, verifyId);

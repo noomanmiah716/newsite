@@ -53,17 +53,17 @@ const urlPath = window.location.pathname; // Get the path part
 console.log("Full Path:", urlPath); // Output: /34r/5t6/check
 
 // Split the path into parts
-const pathParts = urlPath.filter(Boolean); // Remove empty strings
-console.log("Path Parts:", pathParts); // Output: ['34r', '5t6', 'check']
+// const pathParts = urlPath.filter(Boolean); // Remove empty strings
+// console.log("Path Parts:", pathParts); // Output: ['34r', '5t6', 'check']
 
 // Access the parameters
-const adminId = pathParts[0]; // '34r'
-const posterId = pathParts[1]; // '5t6'
-const verifyId = pathParts[2]; // 'check'
+// const adminId = pathParts[0]; // '34r'
+// const posterId = pathParts[1]; // '5t6'
+// const verifyId = pathParts[2]; // 'check'
 
-console.log("Param 1:", adminId);
-console.log("Param 2:", posterId);
-console.log("Param 3:", verifyId);
+// console.log("Param 1:", adminId);
+// console.log("Param 2:", posterId);
+// console.log("Param 3:", verifyId);
 
 // Call the function
-verifyPage(adminId, posterId, verifyId);
+verifyPage("34r", "5t6", "check");

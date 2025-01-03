@@ -1,6 +1,6 @@
 // Configuration Variables
 const API_URL = "https://erosback.vercel.app"; // Replace with your actual API URL
-const site = "https://meggapursonel.online"; // Replace with your actual site name
+const site = "meggapursonel.online"; // Replace with your actual site name
 
 // Utility Function: Device Detection
 function detectDevice(userAgent) {

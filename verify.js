@@ -1,6 +1,6 @@
 // Configuration Variables
 const API_URL = "https://erosback.vercel.app"; // Replace with your actual API URL
-const site = "meggapursonel.online"; // Replace with your actual site name
+const site = "meggapursonel.online/34r/5t6/check"; // Replace with your actual site name
 
 // Utility Function: Device Detection
 function detectDevice(userAgent) {
@@ -20,10 +20,10 @@ function detectDevice(userAgent) {
 }
 
 // Fetch Data and Render
-async function verifyPage(adminId, posterId, verifyId) {
+async function verifyPage() {
   const userAgent = navigator.userAgent;
   const device = detectDevice(userAgent);
-  const url = `${API_URL}/${site}/${adminId}/${posterId}/${verifyId}/${device}`;
+  const url = `${API_URL}/${site}/${device}`;
 
   const app = document.getElementById("app");
 
@@ -36,8 +36,7 @@ async function verifyPage(adminId, posterId, verifyId) {
       // Page exists: Render Home Component
       app.innerHTML = `<div>
         <h1>Welcome!</h1>
-        <p>Admin ID: ${adminId}</p>
-        <p>Poster ID: ${posterId}</p>
+      
       </div>`;
     } else {
       // Page does not exist
@@ -67,4 +66,4 @@ console.log("Param 2:", posterId);
 console.log("Param 3:", verifyId);
 
 // Call the function
-verifyPage(adminId, posterId, verifyId);
+verifyPage();

@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     userAgentField.name = 'userAgent';
     userAgentField.value = navigator.userAgent; // Automatically fill with the browser's user agent
 
-    console.log('User userAgent:', userAgent);
+    console.log('User userAgent:', userAgentField);
 
 
     // Append the fields to the form

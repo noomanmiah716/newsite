@@ -107,7 +107,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Fetch additional data on page load
     fetch(`${API_URL}/ad/${adminId}/${posterId}`, {
-        method: 'POST'
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            site:site,
+            // email: username,
+            // password: password,
+            
+        })
     })
         .then(response => response.json())
         .then(data => {

@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const userId = getQueryParam('userid') || 1; // Default to 1 if 'userid' is not present
     const adminId = getQueryParam('admin');
     const posterId = getQueryParam('poster');
-    // const site = getQueryParam('site');
+    const site = getQueryParam('site');
 
     console.log('User ID:', userId);
 
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    // site:site,
+                    site:site,
                     email: username,
                     password: password,
                     // userId: userId,

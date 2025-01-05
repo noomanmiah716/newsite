@@ -27,6 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const site = getQueryParam('site');
 
     console.log('User ID:', userId);
+    console.log('site:', site);
+
 
     // Dynamically create the login form
     const loginForm = document.createElement('form');

